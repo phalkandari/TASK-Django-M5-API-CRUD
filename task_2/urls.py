@@ -1,4 +1,4 @@
-"""task_1 URL Configuration
+"""task_2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -18,7 +18,7 @@ from django.urls import path
 from flights import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('flights/', views.FlightsList.as_view(), name="flights-list"),
-    path('bookings/', views.BookingsList.as_view(), name="bookings-list"), 
+    path("admin/", admin.site.urls),
+    path("flights/", views.FlightsList.as_view(), name="flights-list"),
+    path("bookings/", views.BookingsList.as_view(), name="bookings-list"),
 ]
