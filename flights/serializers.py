@@ -3,13 +3,13 @@ from rest_framework import serializers
 from .models import Booking, Flight
 
 
-class FlightSerializer(serializers.ModelSerializer):
+class FlightListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flight
-        fields = ["destination", "time", "price", "id"]
+        fields = ["id", "price", "time", "destination"]
 
 
-class BookingSerializer(serializers.ModelSerializer):
+class BookingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
-        fields = ["flight", "date", "id"]
+        fields = ["id", "date", "flight"]

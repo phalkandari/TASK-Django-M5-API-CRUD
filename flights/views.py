@@ -3,14 +3,14 @@ from datetime import datetime
 from rest_framework.generics import ListAPIView
 
 from .models import Booking, Flight
-from .serializers import BookingSerializer, FlightSerializer
+from .serializers import BookingListSerializer, FlightListSerializer
 
 
-class FlightsList(ListAPIView):
+class FlightListView(ListAPIView):
     queryset = Flight.objects.all()
-    serializer_class = FlightSerializer
+    serializer_class = FlightListSerializer
 
 
-class BookingsList(ListAPIView):
+class BookingListView(ListAPIView):
     queryset = Booking.objects.filter(date__gte=datetime.today())
-    serializer_class = BookingSerializer
+    serializer_class = BookingListSerializer
