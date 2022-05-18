@@ -74,17 +74,30 @@ class BookingListTest(APITestCase):
         flight2 = Flight.objects.create(**self.flight2)
         user = User.objects.create(username="laila", password="1234567890-=")
 
+        today = date.today()
         Booking.objects.create(
-            flight=flight1, date="2018-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year - 2, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2019-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year - 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight1, date="2021-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2021-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
 
     def test_url_works(self):
@@ -127,17 +140,30 @@ class BookingDetails(APITestCase):
         flight2 = Flight.objects.create(**flight2)
         user = User.objects.create(username="laila", password="1234567890-=")
 
+        today = date.today()
         Booking.objects.create(
-            flight=flight1, date="2018-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year - 2, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2019-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year - 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight1, date="2020-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2021-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
 
     def test_url_works(self):
@@ -189,17 +215,30 @@ class BookingUpdate(APITestCase):
         flight2 = Flight.objects.create(**flight2)
         user = User.objects.create(username="laila", password="1234567890-=")
 
+        today = date.today()
         Booking.objects.create(
-            flight=flight1, date="2018-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year - 2, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2019-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year - 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight1, date="2020-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2021-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
 
     def test_url_works(self):
@@ -211,7 +250,7 @@ class BookingUpdate(APITestCase):
         data = {"date": "2019-05-05", "passengers": 4}
 
         old_booking = Booking.objects.get(id=1)
-        response = self.client.put(reverse("update-booking", args=[1]), data)
+        self.client.put(reverse("update-booking", args=[1]), data)
         new_booking = Booking.objects.get(id=1)
         self.assertEqual(
             {
@@ -270,17 +309,30 @@ class BookingDelete(APITestCase):
         flight2 = Flight.objects.create(**flight2)
         user = User.objects.create(username="laila", password="1234567890-=")
 
+        today = date.today()
         Booking.objects.create(
-            flight=flight1, date="2018-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year - 2, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2019-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year - 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight1, date="2020-01-01", user=user, passengers=2
+            flight=flight1,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
         Booking.objects.create(
-            flight=flight2, date="2021-01-01", user=user, passengers=2
+            flight=flight2,
+            date=today.replace(year=today.year + 1, day=1),
+            user=user,
+            passengers=2,
         )
 
     def test_url_works(self):
@@ -288,6 +340,6 @@ class BookingDelete(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_update(self):
-        response = self.client.delete(reverse("cancel-booking", args=[1]))
+        self.client.delete(reverse("cancel-booking", args=[1]))
         self.assertEqual(Booking.objects.all().count(), 3)
         self.assertEqual(Booking.objects.filter(id=1).count(), 0)
