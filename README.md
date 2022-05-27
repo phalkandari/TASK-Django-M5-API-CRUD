@@ -1,7 +1,7 @@
 # Steps
 
 1. Setup a virtual environment.
-2. Fork the repository for [Django REST Task 2](https://github.com/JoinCODED/REST_task_02/) in JoinCODED’s Github and Clone it.
+2. Fork the repository for [Django REST Task 2](https://github.com/JoinCODED/TASK-Django-M5-API-CRUD) in JoinCODED’s Github and Clone it.
 3. Install the packages from the requirements file.
 4. Create an API detail view:
    - which will display the following fields for the `Booking` object:
