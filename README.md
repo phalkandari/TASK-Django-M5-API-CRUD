@@ -1,10 +1,10 @@
 # Steps
 
-1. Setup a virtual environment.
-2. Fork the repository for [Django REST Task 2](https://github.com/JoinCODED/TASK-Django-M5-API-CRUD) in JoinCODED’s Github and Clone it.
-3. Install the packages from the requirements file.
+1. Fork and clone [this repository](https://github.com/JoinCODED/TASK-Django-M5-API-CRUD).
+2. Create a `virtual environment`.
+3. Install the packages using `pip install -r dev-requirements.txt`.
 4. Create an API detail view:
-   - which will display the following fields for the `Booking` object:
+   - Which will display the following fields for the `Booking` object:
      - `id`
      - `flight`
      - `date`
